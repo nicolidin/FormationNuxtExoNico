@@ -3,7 +3,7 @@ import { useCookie } from '#app'
 // Exercice redirection !
 // ne pas tout commenter sinon fail
 export default defineNuxtRouteMiddleware((to, from) => {
-  console.log("middleware !!")
+  console.log("middleware first visit !!")
   const lastVisitCookieName = 'lastVisitDate'
 
   // On récupère la date actuelle locale (année-mois-jour)

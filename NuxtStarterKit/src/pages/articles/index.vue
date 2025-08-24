@@ -10,10 +10,27 @@
 import {fetchArticles} from "~/api/strapi/fetchArticles";
 import ArticleList from "~/components/Molecules/ArticleList.vue";
 
-// exo 1
+// // exo 1 en appelant function (plus clean)
 // const { data: articles, error } = await useAsyncData('articles', () =>
-//   fetchArticlesExo1()
+//   fetchArticles()
 // )
+
+//exo1 en direct
+// fonctionne QUE si on rafréchis la page /articles car fonctionne que en SS
+// pas de middleware ou route intermediaire encore
+const { data: articles, error } = await useAsyncData('articles', async ()  => {
+  console.log("we fetch articles")
+  const config = useRuntimeConfig();
+  const data =  await $fetch('http://localhost:1337/api/articles', {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${config.strapiBearerToken}`,
+    }
+  })
+  console.log("data: ", data);
+  return data
+})
+
 
 
 // Exercice 2 – Utilisation d'une route
@@ -24,16 +41,16 @@ import ArticleList from "~/components/Molecules/ArticleList.vue";
 //   $fetch('/api/strapi/articles')
 // )
 
-
-//📝 Exercice - Création d'une page article​ -> gestion store
-const articleStore = useArticlesStore();
-const { data: articles, error } = await useAsyncData('articles', async () => {
-      const resp = await $fetch('/api/strapi/articles')
-      console.log("resp: ", resp)
-      articleStore.setArticles(resp.data)
-      return resp
-}
-)
+//
+// //📝 Exercice - Création d'une page article​ -> gestion store
+// const articleStore = useArticlesStore();
+// const { data: articles, error } = await useAsyncData('articles', async () => {
+//       const resp = await $fetch('/api/strapi/articles')
+//       console.log("resp: ", resp)
+//       articleStore.setArticles(resp.data)
+//       return resp
+// }
+// )
 </script>
 
 <style scoped lang="scss">

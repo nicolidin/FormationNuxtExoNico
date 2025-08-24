@@ -36,6 +36,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/': {prerender: true}
   },
 
   router: {
