@@ -18,28 +18,29 @@ import ArticleList from "~/components/Molecules/ArticleList.vue";
 //exo1 en direct
 // fonctionne QUE si on rafréchis la page /articles car fonctionne que en SS
 // pas de middleware ou route intermediaire encore
-const { data: articles, error } = await useAsyncData('articles', async ()  => {
-  console.log("we fetch articles")
-  const config = useRuntimeConfig();
-  const data =  await $fetch('http://localhost:1337/api/articles', {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${config.strapiBearerToken}`,
-    }
-  })
-  console.log("data: ", data);
-  return data
-})
-
+// const { data: articles, error } = await useAsyncData('articles', async ()  => {
+//   console.log("import.meta.server: ", import.meta.server )
+//   console.log("we fetch articles")
+//   const config = useRuntimeConfig();
+//   const data =  await $fetch('http://localhost:1337/api/articles', {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${config.strapiBearerToken}`,
+//     }
+//   })
+//   console.log("data: ", data);
+//   return data
+// })
+//
 
 
 // Exercice 2 – Utilisation d'une route
 // intermédiaire Nuxt pour fetch articles // on appel la route
 // la même pour  exercice 3  avec middleware
 // décommenter sois middleware soit route
-// const { data: articles, error } = await useAsyncData('articles', () =>
-//   $fetch('/api/strapi/articles')
-// )
+const { data: articles, error } = await useAsyncData('articles', () =>
+  $fetch('/api/strapi/articles')
+)
 
 //
 // //📝 Exercice - Création d'une page article​ -> gestion store
