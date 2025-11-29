@@ -49,4 +49,9 @@ const { data: articleData, error } = await useAsyncData<ArticleType | null>(
 const article = computed(() => {
   return articleData.value || store.articlesBySlug(slug);
 });
+
+useSeoMeta({
+  title: 'mon article: ' + article.value.slug ,
+  description: article.value?.contentMd,
+})
 </script>

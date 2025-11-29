@@ -1,11 +1,12 @@
 import { proxyRequest } from 'h3'
 import {fetchWithCache} from "../fetchWithCache";
+// ne pas commenter defineEventHanlder sinon bug (seulement pour middleware)
 
 // exercice middlewaree with cache !
 export default defineEventHandler(async (event) => {
-  const url = event.node.req.url || '';
+ /* const url = event.node.req.url || '';
 
-  if (!url.startsWith('/api/articles')) return;
+  if (!url.startsWith('/api/strapi/articles')) return;
 
   const config = useRuntimeConfig();
 
@@ -31,7 +32,7 @@ export default defineEventHandler(async (event) => {
         Authorization: `Bearer ${config.strapiBearerToken}`,
       },
     });
-  }
+  }*/
 });
 
 // EXERCICE middleware !!!

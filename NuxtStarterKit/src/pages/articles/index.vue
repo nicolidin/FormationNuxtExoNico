@@ -38,20 +38,26 @@ import ArticleList from "~/components/Molecules/ArticleList.vue";
 // intermédiaire Nuxt pour fetch articles // on appel la route
 // la même pour  exercice 3  avec middleware
 // décommenter sois middleware soit route
-const { data: articles, error } = await useAsyncData('articles', () =>
-  $fetch('/api/strapi/articles')
-)
-
+// const { data: articles, error } = await useAsyncData('articles', () =>
+//   $fetch('/api/strapi/articles')
+// )
+//
 //
 // //📝 Exercice - Création d'une page article​ -> gestion store
-// const articleStore = useArticlesStore();
-// const { data: articles, error } = await useAsyncData('articles', async () => {
-//       const resp = await $fetch('/api/strapi/articles')
-//       console.log("resp: ", resp)
-//       articleStore.setArticles(resp.data)
-//       return resp
-// }
-// )
+const articleStore = useArticlesStore();
+const { data: articles, error } = await useAsyncData('articles', async () => {
+      console.log("useAsyncData articles page")
+      const resp = await $fetch('/api/strapi/articles')
+      console.log("resp: ", resp)
+      articleStore.setArticles(resp.data)
+      return resp
+}
+)
+
+useSeoMeta({
+  title: 'my page articles',
+  description: 'tous mes articles - Nicolas Lidin',
+});
 </script>
 
 <style scoped lang="scss">

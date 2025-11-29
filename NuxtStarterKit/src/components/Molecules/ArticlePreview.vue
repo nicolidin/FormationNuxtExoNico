@@ -12,7 +12,7 @@ import type { ArticleType } from '~/types/ArticleType';
 const props = defineProps<{ article: ArticleType }>();
 
 const router = useRouter();
-const goToArticle = () => {
+const goToArticle = (slug: string) => {
   router.push(`/articles/${props.article.slug}`);
 };
 

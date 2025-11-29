@@ -6,8 +6,10 @@ export type State = {
   articles: Array<ArticleType>;
 };
 
-export const useArticlesStore = defineStore<State>("articlesStore", {
-  state: () => ({ articles: [] }),
+export const useArticlesStore = defineStore("articlesStore", {
+  state: (): State => ({
+    articles: [],
+  }),
 
   getters: {
     articlesBySlug: (state) => {
@@ -21,4 +23,7 @@ export const useArticlesStore = defineStore<State>("articlesStore", {
       this.articles = newArticles;
     },
   },
+
+  // 👉 la config persist doit être ici
+  persist: { storage: piniaPluginPersistedstate.cookies() }
 });
