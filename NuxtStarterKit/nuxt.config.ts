@@ -1,11 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import {fileURLToPath} from "node:url";
-import path from 'path'
+import { transformAssetUrls } from "vite-plugin-vuetify";
+import path from "path";
 
 export default defineNuxtConfig({
-  srcDir: 'src/', // Tell Nuxt to use the `src` directory
-  compatibilityDate: '2024-04-03',
+  srcDir: "app",
+  compatibilityDate: "2025-02-28",
   devtools: { enabled: true },
   ssr: true,
   // target: 'static',
