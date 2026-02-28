@@ -1,8 +1,8 @@
 // Exercice 2 – Utilisation d'une route
 // intermédiaire Nuxt pour fetch article
 // c'est la suite de l'appel dans articles.vue
-export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
+// export default defineEventHandler(async (event) => {
+ /* const config = useRuntimeConfig();
   const strapiUrl = `${config.strapiBaseUrl}/articles`;
 
   try {
@@ -22,4 +22,6 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Failed to fetch data from Strapi",
     });
   }
-});
+
+  */
+// });
